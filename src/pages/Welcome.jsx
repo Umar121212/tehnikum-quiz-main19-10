@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Heading } from "../components/Heading";
-import { AppButton } from "../components/AppButton";
+import { LinkButton } from "../components/LinkButton";
 import { AppInput } from "../components/AppInput";
 
 const Welcome = () => {
@@ -25,6 +25,8 @@ const Welcome = () => {
       setPhoneError(false)
     }
   }, [phoneNumberValue]) 
+
+  const isNextButtonDisabled = nameError || phoneError
 
   return (
     <div>
@@ -57,7 +59,12 @@ const Welcome = () => {
                 onInputChange={(e) => setPhoneNumberValue(e.target.value)}
                 isError={phoneError}
               />
-              <AppButton buttonText="Далее" type="submit" isDisabled={true} />
+              <LinkButton 
+                path="step-one"
+                buttonText="Далее" 
+                type="submit" 
+                isDisabled={isNextButtonDisabled} 
+                />
             </form>
           </div>
         </div>

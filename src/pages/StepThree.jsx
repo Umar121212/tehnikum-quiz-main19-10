@@ -1,11 +1,15 @@
 import React from "react";
+import { ProgressBar } from "../components/ProgressBar";
 
 const StepThree = () => {
+
+  
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <div className="indicator">
+          <ProgressBar/>
+          {/* <div className="indicator">
             <div className="indicator__text">
               <span className="indicator__description"
                 >Скидка за прохождение опроса:
@@ -18,7 +22,7 @@ const StepThree = () => {
               <div className="indicator__unit indicator__unit-3"></div>
               <div className="indicator__unit indicator__unit-4"></div>
             </div>
-          </div>
+          </div> */}
           <div className="question">
             <h2>3. Занимательный вопрос</h2>
             <ul className="emoji-variants">

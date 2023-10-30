@@ -1,45 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import { ProgressBar } from "../components/ProgressBar";
+import { TextAnswerOption } from "../components/TextAnswerOption";
+import { LinkButton } from "../components/LinkButton";
 
 const StepTwo = () => {
+  const [selectedAnswerId, setSelectedAnswerId] = useState()
+
+  const answersData = [
+    {
+      id: 'variant-1',
+      textAnswer: 'Ваш ответ 1'
+    },
+    {
+      id: 'variant-2',
+      textAnswer: 'Ваш ответ 2'
+    },
+    {
+      id: 'variant-3',
+      textAnswer: 'Ваш ответ 3'
+    },
+    {
+      id: 'variant-4',
+      textAnswer: 'Ваш ответ 4'
+    }
+  ]
+
+
+
   return (
     <div className="container">
     <div className="wrapper">
       <div className="variants-quiz">
-        <div className="indicator">
-          <div className="indicator__text">
-            <span className="indicator__description"
-              >Скидка за прохождение опроса:
-            </span>
-            <span className="indicator__value">15%</span>
-          </div>
-          <div className="indicator__progressbar">
-            <div className="indicator__unit indicator__unit-1 _active"></div>
-            <div className="indicator__unit indicator__unit-2"></div>
-            <div className="indicator__unit indicator__unit-3"></div>
-            <div className="indicator__unit indicator__unit-4"></div>
-          </div>
-        </div>
+        <ProgressBar/>
         <div className="question">
           <h2>1. Занимательный вопрос</h2>
           <ul className="variants">
-            <li className="variant-wrapper">
-              <input required type="radio" name="variant" id="variant-1" />
-              <label htmlFor="variant-1">Ваш ответ</label>
-            </li>
-            <li className="variant-wrapper">
-              <input required type="radio" name="variant" id="variant-2" />
-              <label htmlFor="variant-2">Ваш ответ</label>
-            </li>
-            <li className="variant-wrapper">
-              <input required type="radio" name="variant" id="variant-3" />
-              <label htmlFor="variant-3">Ваш ответ</label>
-            </li>
-            <li className="variant-wrapper">
-              <input required type="radio" name="variant" id="variant-4" />
-              <label htmlFor="variant-4">Ваш ответ</label>
-            </li>
+            {
+              answersData.map(answer => (
+                <TextAnswerOption
+                key={answer.id}
+                id={answer.id}
+                textAnswer={answer.textAnswer}
+                isAnswerChecked={answer.id === selectedAnswerId}
+                onClick={() => setSelectedAnswerId(answer.id)}
+                />
+              ))
+            }
           </ul>
-          <button disabled id="next-btn">Далее</button>
+          <LinkButton
+              path="/step-two"
+              buttonText="Далее" 
+              type="submit" 
+              isDisabled={true} 
+            />
         </div>
       </div>
     </div>

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { AppInput } from "../components/AppInput";
+/* import { AppButton } from "../components/AppButton"; */
+import { LinkButton } from "../components/LinkButton";
+import { ProgressBar } from "../components/ProgressBar";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
@@ -8,55 +11,45 @@ const StepOne = () => {
 
   useEffect(() => {
     if (!answerValue) {
-      setAnswerError(true)
+      setAnswerError(true);
     } else {
-      setAnswerError(false)
+      setAnswerError(false);
     }
-  }, [answerValue])
+  }, [answerValue]);
+
+  const isNextButtondisabled = answerError;
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
           <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description"
-                >Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
+          <ProgressBar/>
           </div>
           <div className="question">
             <h2>1. Занимательный вопрос</h2>
-            <label className="input-wrapper">
-              <AppInput
-              inputLabel='Ваш ответ'
+            <AppInput
+              inputLabel="Ваш ответ"
               isRequired={true}
-              type='text'
-              inputName='username'
-              inputId='username'
-              inputPlaceholder='Ваш ответ'
-              /* errorText='Введите номер в правильном формате например' */
+              type="text"
+              inputName="username"
+              inputId="username"
+              inputPlaceholder="Ваш ответ"
               inputValue={answerValue}
               onInputChange={(e) => setAnswerValue(e.target.value)}
               isError={answerError}
-              />
-              <span id="error-message">
-                Введите номер в правильном формате например
-              </span>
-            </label>
-            <button disabled id="next-btn">Далее</button>
+            />
+            <LinkButton
+              path="/step-two"
+              buttonText="Далее" 
+              type="submit" 
+              isDisabled={isNextButtondisabled} 
+            />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default StepOne;

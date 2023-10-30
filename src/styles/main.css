@@ -14,6 +14,10 @@ body {
   color: #22222a;
 }
 
+#root, .App {
+  height: 100%;
+}
+
 h1 {
   text-align: center;
   font-size: 28px;
@@ -118,6 +122,7 @@ input:disabled::placeholder {
 button {
   cursor: pointer;
   width: 100%;
+  border: 2px solid transparent;
   border-radius: 50px;
   background-color: #a497f9;
   color: white;
@@ -128,35 +133,20 @@ button:disabled {
   background-color: #b8bcc5;
 }
 button:enabled:hover {
-  background-color: rgb(122, 112, 186);
-  transform: scale(1.05);
+  background-color: transparent;
+  border-color: #a497f9;
+  color: #a497f9;
+  box-shadow: 0 0 20px #a497f9;
 }
 button:disabled:hover, button:disabled:active {
-  background-color: #eb5757;
-  animation: errorAnim 300ms;
+  opacity: 0.5;
+  cursor: default;
 }
 button:enabled:active {
-  transform: scale(0.9);
   transition: 100ms;
+  box-shadow: none;
 }
 
-@keyframes errorAnim {
-  0% {
-    margin-left: -10px;
-  }
-  25% {
-    margin-left: 10px;
-  }
-  50% {
-    margin-left: -10px;
-  }
-  75% {
-    margin-left: 10px;
-  }
-  100% {
-    margin-left: 0;
-  }
-}
 .indicator {
   position: fixed;
   top: 70px;
@@ -357,10 +347,4 @@ button:enabled:active {
   font-size: 18px;
   text-align: center;
   margin-bottom: 16px;
-}
-#root {
-  height: 100%;
-}
-.App {
-  height: 100vh;
-}
+}/*# sourceMappingURL=main.css.map */
